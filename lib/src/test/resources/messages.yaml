@@ -1,0 +1,14 @@
+top:
+  sub:
+    check: Check it
+    check-two: I'm serious
+  sub-another:
+    may-be-array:
+      - text: some text
+        hint: some hint
+      - text: some another text
+        hint: o'rly?
+  list-of-value:
+    - 1
+    - 2
+    - 3
