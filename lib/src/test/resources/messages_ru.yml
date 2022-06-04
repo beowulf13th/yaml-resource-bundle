@@ -1,0 +1,14 @@
+top:
+  sub:
+    check: Проверь это
+    check-two: Я серьёзно
+  sub-another:
+    may-be-array:
+      - text: какой-то текст
+        hint: какая-то подсказка
+      - text: ещё какой-то текст
+        hint: да ладно?
+  list-of-value:
+    - 1
+    - 2
+    - 3
