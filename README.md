@@ -23,12 +23,12 @@ implementation 'ru.maksimvoloshin.utility:yaml-resource-bundle:0.1'
 
 ```java
 @Bean
-ResourceBundleMessageSource messageSource(){
-        ResourceBundleMessageSource bundle=new YamlResourceBundleMessageSource();
-        bundle.setBasename("messages");
-        bundle.setDefaultEncoding("utf-8");
-        return bundle;
-        }
+ResourceBundleMessageSource messageSource() {
+    ResourceBundleMessageSource bundle=new YamlResourceBundleMessageSource();
+    bundle.setBasename("messages");
+    bundle.setDefaultEncoding("utf-8");
+    return bundle;
+}
 ```
 
 - Just inject bean in a project and use as usually
