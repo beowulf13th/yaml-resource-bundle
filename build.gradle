@@ -1,0 +1,91 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+    id 'io.codearte.nexus-staging' version '0.30.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+group = 'ru.maksimvoloshin.utility'
+version = '0.1'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+
+dependencies {
+    api 'org.springframework:spring-context:[5.0.0,)'
+    implementation 'org.yaml:snakeyaml:1.30'
+    implementation 'org.slf4j:slf4j-api:2.0.0-alpha7'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
+
+publishing {
+    repositories {
+        maven {
+            def releasesUrl = uri('https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/')
+            def snapshotsUrl = uri('https://s01.oss.sonatype.org/content/repositories/snapshots/')
+            url = (version.toString().endsWith('SNAPSHOT'))  ? snapshotsUrl : releasesUrl
+            credentials {
+                username = project.properties['ossrhUsername'].toString()
+                password = project.properties['ossrhPassword'].toString()
+            }
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = group
+            artifactId = 'yaml-resource-bundle'
+            version = version
+
+            from(components['java'])
+
+            pom {
+                name = 'Yaml Resource Bundle Library'
+                description = 'Use yaml files for bundle and message source'
+                url = 'https://github.com/beowulf13th/yaml-resource-bundle'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'beowulf13th'
+                        name = 'Maksim Voloshin'
+                        email = 'me@maksimvoloshin.ru'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/beowulf13th/yaml-resource-bundle.git'
+                    developerConnection = 'scm:git:https://github.com/beowulf13th/yaml-resource-bundle.git'
+                    url = 'https://github.com/beowulf13th/yaml-resource-bundle'
+                }
+            }
+        }
+    }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+signing {
+    sign publishing.publications
+}
+
+nexusStaging {
+    serverUrl = 'https://s01.oss.sonatype.org/service/local/'
+    username = project.properties['ossrhUsername'].toString()
+    password = project.properties['ossrhPassword'].toString()
+}
