@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 /**
  * A little copy of Spring class
+ * Overrides Spring {@link org.springframework.context.support.ResourceBundleMessageSource ResourceBundleControlProvider} for using in message source
  */
 public class YamlResourceBundleMessageSource extends ResourceBundleMessageSource {
     @Override
