@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.util.ResourceBundle;
 import java.util.spi.ResourceBundleControlProvider;
 
+/**
+ * Control provider for YAML files
+ */
 public class YamlResourceBundleControlProvider implements ResourceBundleControlProvider {
     private static final Logger log = LoggerFactory.getLogger(YamlResourceBundleControlProvider.class);
 

@@ -11,6 +11,9 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+/**
+ * YAML file parser
+ */
 public final class Parser {
     private static final Logger log = LoggerFactory.getLogger(Parser.class);
 

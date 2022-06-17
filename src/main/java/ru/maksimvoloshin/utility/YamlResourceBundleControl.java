@@ -16,6 +16,9 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+/**
+ * Control for Yaml resource
+ */
 public class YamlResourceBundleControl extends ResourceBundle.Control {
     private static final Logger log = LoggerFactory.getLogger(YamlResourceBundleControl.class);
 
